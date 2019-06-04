@@ -1,0 +1,10 @@
+pipelines:
+  default:
+    - step:
+        name: Test
+        image: composer:1.7
+        script:
+          - composer install --no-interaction --no-progress --prefer-dist --no-suggest
+          - composer run lint
+          - composer run analyze
+          - composer test

@@ -1,0 +1,45 @@
+{
+    "name": "atoms/cache",
+    "description": "An implementation of PSR-6.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Pettersson",
+            "email": "martin.pettersson@gotamedia.se"
+        }
+    ],
+    "minimum-stability": "stable",
+    "scripts": {
+        "lint": "phpcs --standard=PSR2 src test",
+        "analyze": "phpmd src text phpmd.xml || STATUS=1; phan --output-mode text --color --allow-polyfill-parser || STATUS=1; exit ${STATUS:-0}",
+        "test": "phpunit"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atoms\\Cache\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atoms\\Cache\\": "test/"
+        }
+    },
+    "provide": {
+        "psr/cache-implementation": "1.0"
+    },
+    "suggest": {
+        "atoms/cache-redis": "Allows storing cache in Redis"
+    },
+    "require": {
+        "php": ">=7.1",
+        "psr/cache": "~1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "~3.4",
+        "phpmd/phpmd": "~2.6",
+        "phpunit/phpunit": "~7.5",
+        "phan/phan": "~2.0",
+        "symfony/phpunit-bridge": "~4.2"
+    }
+}
