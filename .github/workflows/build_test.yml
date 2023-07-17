@@ -2,8 +2,6 @@ name: build-test
 
 on:
   push:
-    branches:
-      - 'master'
 
 jobs:
   build_test:
