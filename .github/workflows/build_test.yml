@@ -1,0 +1,19 @@
+name: build-test
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    container: composer:1.7
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v3
+      - name: build Test
+        run: composer install --no-interaction --no-progress --prefer-dist --no-suggest
+      - run: composer run lint
+      - run: composer run analyze
+      - run: composer test
